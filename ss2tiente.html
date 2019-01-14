@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi tiền tệ</title>
+</head>
+<body>
+
+<form id="form1" name="form1" method="post" action="">
+    <label>Amount
+        <input type="text" name="text" id="Amount" />
+    </label>
+        <label>From Currency
+    <select name="select  " id="FromCurrency">
+        <option value ="USD" >USD</option>
+        <option value ="VietNam" >VietNam</option>
+        <option value ="Aur" >Aur</option>
+    </select>
+     <label>To Currency
+    <select name="To Curency" id="ToCurrency" >
+        <option value ="VietNam" >VietNam</option>
+        <option value ="USD" >USD</option>
+        <option value ="Aur" >Aur</option>
+
+    </select>
+    <input type="button" name="convert" value ="gửi" Onclick ="doitiente();"/>
+
+<script>
+    function doitiente() {
+        // get amount
+        var AmountElement = document.getElementById("Amount");
+        var Amount = AmountElement.value;
+        var AmountValue = parseInt(Amount);
+        // get  fromcurrentcy
+        var fromCurrency = document.getElementById("FromCurrency");
+        var from = fromCurrency.value;
+
+        // get to currency
+        var toCurrency = document.getElementById("ToCurrency");
+        var to = toCurrency.value;
+        //tinh toan
+        var ViettoUSD = AmountValue *(1/23000);
+        var kq;
+        if(from =="VietNam" && to =="USD")
+        {
+            //kq = document.write(Amount + "VND ="+ ViettoUSD +"USD");
+            kq = ViettoUSD;
+        }
+        if(from =="VietNam" && to =="Aur")
+        {
+            kq = AmountValue *(1/26745);
+        }
+        if(from =="USD" && to =="VietNam")
+        {
+            kq = AmountValue *23000;
+        }
+        if(from =="USD" && to =="Aur")
+        {
+            kq = AmountValue *(23000/26745);
+        }
+        if(from =="Aur" && to =="VietNam")
+        {
+            kq = AmountValue *26745;
+        }
+        if(from =="Aur" && to =="USD")
+        {
+            kq = AmountValue *(26745/23000);
+        }
+        // shown result
+        alert(kq);
+    }
+</script>
+</form>
+</body>
+</html>
